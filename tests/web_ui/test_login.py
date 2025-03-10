@@ -8,6 +8,7 @@ login = Login()
 common = Common()
 
 @pytest.mark.web
+@allure.story("Манипуляции с логином через браузер")
 @allure.title("Проверка неуспешной авторизации")
 @allure.tag("login")
 def test_failed_authorization():

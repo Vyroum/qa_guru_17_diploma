@@ -10,6 +10,7 @@ catalog = Catalog()
 cart = Cart()
 
 @pytest.mark.web
+@allure.story("Манипуляции с каталогом и корзиной")
 @allure.title("Поиск товара в каталоге")
 def test_search_item_in_catalog():
     common.open_browser()
