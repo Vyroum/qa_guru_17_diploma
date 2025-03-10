@@ -7,7 +7,9 @@ import pytest
 cart = Cart()
 cart_api = CartAPI()
 
+@allure.story("Манипуляции с корзиной через API")
 @pytest.mark.api
+@allure.tag("api")
 @allure.title("Добавление предмета в корзину через API и проверка в браузере")
 def test_add_item_to_cart_api():
     cart_api.add_item_to_cart_though_api()

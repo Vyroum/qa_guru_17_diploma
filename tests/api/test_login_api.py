@@ -10,6 +10,7 @@ api_login = LoginAPI()
 login_action = Login()
 
 @pytest.mark.api
+@allure.story("Манипуляция с логином через API")
 @allure.tag("api")
 @allure.title("Проверка успешной аутентификации через API")
 def test_api_successful_authentication():
