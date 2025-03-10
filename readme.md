@@ -84,7 +84,7 @@ ___
 
 ### Прохождение мобильного теста в приложении "Все инструменты"
 
-<img src="https://github.com/Vyroum/qa_guru_17_diploma/blob/main/readme_files/video-e86e5a2bb5f578d50c260ad8fc6a7dda395b4854.gif" width="320" height="630"/>
+<img src="https://github.com/Vyroum/qa_guru_17_diploma/blob/main/readme_files/video-e86e5a2bb5f578d50c260ad8fc6a7dda395b4854.gif" width="520" height="630"/>
 
 
 ## Отчёт о прохождении теста в Telegram
