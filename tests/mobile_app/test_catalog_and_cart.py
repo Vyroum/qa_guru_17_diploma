@@ -1,5 +1,6 @@
 import time
 
+import allure
 from allure_commons._allure import step
 from appium.webdriver.common.appiumby import AppiumBy
 from selene import browser, have, be
@@ -7,6 +8,8 @@ import pytest
 
 
 @pytest.mark.mobile
+@allure.tag("cart", "catalog", "mobile")
+@allure.title("Добавление предмета в корзину")
 def test_find_item_in_catalog():
     time.sleep(5)
     with step("Пропуск стартовой страницы"):

@@ -12,6 +12,7 @@ cart = Cart()
 @pytest.mark.web
 @allure.story("Манипуляции с каталогом и корзиной")
 @allure.title("Поиск товара в каталоге")
+@allure.tag("catalog", "web")
 def test_search_item_in_catalog():
     common.open_browser()
     catalog.search_product_cpu(cpu)
@@ -19,6 +20,7 @@ def test_search_item_in_catalog():
 
 @pytest.mark.web
 @allure.title("Добавление предмета в корзину")
+@allure.tag("cart", "catalog", "web")
 def test_add_item_to_cart():
     common.open_browser()
     catalog.search_product_cpu(cpu)
@@ -28,6 +30,7 @@ def test_add_item_to_cart():
 
 @pytest.mark.web
 @allure.title("Изменение количества предметов в корзине")
+@allure.tag("cart", "web")
 def test_change_item_quantity_in_cart():
     common.open_browser()
     catalog.search_product_cpu(cpu)
@@ -37,6 +40,7 @@ def test_change_item_quantity_in_cart():
     cart.change_quantity_plus_one(cpu)
 
 @pytest.mark.web
+@allure.tag("cart", "web")
 @allure.title("Удаление предметов из корзины")
 def test_delete_item_from_cart():
     common.open_browser()

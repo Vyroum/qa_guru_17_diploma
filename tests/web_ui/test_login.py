@@ -10,7 +10,7 @@ common = Common()
 @pytest.mark.web
 @allure.story("Манипуляции с логином через браузер")
 @allure.title("Проверка неуспешной авторизации")
-@allure.tag("login")
+@allure.tag("login", "web")
 def test_failed_authorization():
     common.open_browser()
     login.open_login_form_or_user_page()
@@ -20,7 +20,7 @@ def test_failed_authorization():
 
 @pytest.mark.web
 @allure.title("Проверка успешной авторизации")
-@allure.tag("login")
+@allure.tag("login", "web")
 def test_successfull_authorization():
     common.open_browser()
     login.open_login_form_or_user_page()
@@ -32,7 +32,7 @@ def test_successfull_authorization():
 
 
 @allure.title("Проверка успешного логаута")
-@allure.tag("login")
+@allure.tag("login", "web")
 def test_successfull_logout():
     common.open_browser()
     login.open_login_form_or_user_page()
