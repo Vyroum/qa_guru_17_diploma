@@ -34,7 +34,7 @@ ___
 ___
 ### Используемый стек:  
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-plain-wordmark.svg" height="40" width="40" /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/selenium/selenium-original.svg" height="40" width="40" /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/chrome/chrome-original-wordmark.svg" height="40" width="40" /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg" height="40" width="40" /> <img src="https://avatars.githubusercontent.com/u/5879127?s=200&v=4" width="40" height="40"/> <img src="https://raw.githubusercontent.com/Vyroum/Vyroum/refs/heads/main/icons/icons8-telegram.svg" width="40" height="40"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytest/pytest-original.svg" width="40" height="40"/> 
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/browserstack/browserstack-original.svg" height="40" width="40" /> 
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/browserstack/browserstack-original.svg" height="40" width="40" /> <img src="https://github.com/Vyroum/qa_guru_17_diploma/blob/main/readme_files/default.svg" height="40" width="40" /> 
 
   
 ___ 
@@ -64,12 +64,29 @@ ___
 
 ### Детальный отчёт о пройденном тесте
 
-<img src="https://github.com/Vyroum/Vyroum/blob/main/icons/Screenshot_3.png" width="630" height="320"/>
+<img src="https://github.com/Vyroum/qa_guru_17_diploma/blob/main/readme_files/Screenshot_7.png" width="630" height="320"/>
 
-### Видеопрохождение теста
+## Пример отчёта в Allure TestOps
 
-<img src="https://github.com/Vyroum/Vyroum/blob/main/icons/5d0f6222e058a005354e5f9b95638274.gif" width="630" height="320"/>
+### Общий отчёт о запущенных тестах  
 
-### Отчёт о прохождении теста в Telegram
+<img src="https://github.com/Vyroum/qa_guru_17_diploma/blob/main/readme_files/Screenshot_1.png" width="630" height="320"/>
 
-<img src="https://github.com/Vyroum/Vyroum/blob/main/icons/Screenshot_2.png" width="300" height="320"/>
+### Детальный отчёт о запущенных тестах
+
+<img src="https://github.com/Vyroum/qa_guru_17_diploma/blob/main/readme_files/Screenshot_2.png" width="630" height="320"/>
+
+## Видео примеры прохождения тестов
+
+### Прохождение web-теста на добавление предмета в корзину 
+
+<img src="https://github.com/Vyroum/qa_guru_17_diploma/blob/main/readme_files/6f6d5b7e7b992fb8a92a4a906d1ae56f.gif" width="630" height="320"/>
+
+### Прохождение мобильного теста в приложении "Все инструменты"
+
+<img src="https://github.com/Vyroum/qa_guru_17_diploma/blob/main/readme_files/video-e86e5a2bb5f578d50c260ad8fc6a7dda395b4854.gif" width="630" height="320"/>
+
+
+## Отчёт о прохождении теста в Telegram
+
+<img src="https://github.com/Vyroum/qa_guru_17_diploma/blob/main/readme_files/Screenshot_6.png" width="320" height="320"/>
