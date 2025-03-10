@@ -91,14 +91,14 @@ def browser_set(request):
         allure_utils.attach_video(browser)
 
 
-    if context == "browserstack":
-        session_id = browser.driver.session_id
-        allure_utils.attach_bstack_video(
-            session_id,
-            project_config.browserstack_user,
-            project_config.browserstack_key
-        )
-        allure_utils.attach_mobile_page_source(browser)
+    # if context == "browserstack":
+    #     session_id = browser.driver.session_id
+    #     allure_utils.attach_bstack_video(
+    #         session_id,
+    #         project_config.browserstack_user,
+    #         project_config.browserstack_key
+    #     )
+    #     allure_utils.attach_mobile_page_source(browser)
 
     if context in ["local", "selenoid", "emulator", "browserstack"]:
         browser.quit()
