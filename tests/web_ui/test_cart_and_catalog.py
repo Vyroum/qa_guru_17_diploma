@@ -9,6 +9,7 @@ common = Common()
 catalog = Catalog()
 cart = Cart()
 
+
 @pytest.mark.web
 @allure.story("Манипуляции с каталогом и корзиной")
 @allure.title("Поиск товара в каталоге")
@@ -17,6 +18,7 @@ def test_search_item_in_catalog():
     common.open_browser()
     catalog.search_product_cpu(cpu)
     catalog.check_found_item(cpu)
+
 
 @pytest.mark.web
 @allure.title("Добавление предмета в корзину")
@@ -28,6 +30,7 @@ def test_add_item_to_cart():
     cart.open_cart()
     cart.check_presence_in_cart(cpu)
 
+
 @pytest.mark.web
 @allure.title("Изменение количества предметов в корзине")
 @allure.tag("cart", "web")
@@ -38,6 +41,7 @@ def test_change_item_quantity_in_cart():
     cart.open_cart()
     cart.check_presence_in_cart(cpu)
     cart.change_quantity_plus_one(cpu)
+
 
 @pytest.mark.web
 @allure.tag("cart", "web")

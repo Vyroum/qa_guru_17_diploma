@@ -1,8 +1,9 @@
 import time
 
-from selene import browser, have, by, command, be
+from selene import browser, have, by
 import allure
 from resources.cpu import CPU
+
 
 class Catalog:
 

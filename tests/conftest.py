@@ -5,6 +5,8 @@ import project
 import os
 from utils import allure_utils
 
+
+
 def pytest_addoption(parser):
     parser.addoption(
         "--context",
@@ -12,6 +14,7 @@ def pytest_addoption(parser):
         default="local",
         help="Context for tests: local/selenoid/emulator/browserstack",
     )
+
 
 @pytest.fixture(scope="function", autouse=True)
 def browser_set(request):
@@ -37,7 +40,6 @@ def browser_set(request):
             "enableVNC": project_config.enable_vnc,
             "enableVideo": project_config.enable_video,
         })
-
 
         browser.config.driver = webdriver.Remote(
             command_executor=project_config.selenoid_hub,
@@ -89,7 +91,6 @@ def browser_set(request):
         allure_utils.attach_html(browser)
         allure_utils.attach_web_logs(browser)
         allure_utils.attach_video(browser)
-
 
     # if context == "browserstack":
     #     session_id = browser.driver.session_id

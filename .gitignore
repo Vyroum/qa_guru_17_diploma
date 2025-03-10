@@ -197,8 +197,7 @@ fabric.properties
 # Built Visual Studio Code Extensions
 *.vsix
 
-.env.emulator
-.env.local
+
 .env.site_credentials
 .env.selenoid
 .env.browserstack

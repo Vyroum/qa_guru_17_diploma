@@ -31,7 +31,8 @@ def test_find_item_in_catalog():
         browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/buttonClose")).click()
 
     with step("Поиск товара в каталоге"):
-        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/editTextSearch")).click().type("Пылесос")
+        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/editTextSearch")).click().type(
+            "Пылесос")
         time.sleep(1)
 
     with step("Подтверждение успешного поиска категории 'Пылесосы для дома'"):
@@ -48,14 +49,13 @@ def test_find_item_in_catalog():
         browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/buttonGoToCart")).click()
 
     with step("Проверка того что предмет добавлен в корзину"):
-        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/textViewName")).should(have.text("пылесос"))
+        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/textViewName")).should(
+            have.text("пылесос"))
 
     with step("Удаление предмета из корзины"):
         browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/textViewDeleteSelected")).click()
         browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/buttonPositive")).click()
 
     with step("Проверка удаления из корзины"):
-        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/textViewEmptyTitle")).should(have.text("В корзине пока ничего нет"))
-
-
-
+        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/textViewEmptyTitle")).should(
+            have.text("В корзине пока ничего нет"))

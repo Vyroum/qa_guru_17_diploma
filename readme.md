@@ -57,10 +57,10 @@ ___
 2. Запустить через терминал, использую команду ``pytest --context={ENVIRONMENT} -m {TEST}`` где ENVIRONMENT=окружение, например `local`, а TEST= вид теста, например `web`
 3. Сгенерировать отчёт, используя команду ``allure serve .\allure-result\``
 ___
-## Пример отчёта в Allure
+## Пример отчёта в Allure Report
 
-### Общий отчёт о пройденном тесте
-<img src="https://github.com/Vyroum/Vyroum/blob/main/icons/Screenshot_1.png" width="630" height="320"/>
+### Общий отчёт о запущенных тестах
+<img src="https://github.com/Vyroum/qa_guru_17_diploma/blob/main/readme_files/Screenshot_4.png" width="630" height="320"/>
 
 ### Детальный отчёт о пройденном тесте
 

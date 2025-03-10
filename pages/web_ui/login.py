@@ -1,11 +1,12 @@
 import os
 from dotenv import load_dotenv
-from selene import browser, have, by, command, be
+from selene import browser, have, by, be
 import allure
 
 load_dotenv(".env.site_credentials")
 email = os.getenv("email")
 password = os.getenv("password")
+
 
 class Login:
     def open_login_form_or_user_page(self):
@@ -19,7 +20,6 @@ class Login:
 
     def input_valid_login_credentials(self):
         with allure.step("Ввод валидного логина и пароля"):
-
             browser.element(by.name("login")).click().type(email)
             browser.element(by.name("password")).click().type(password)
 

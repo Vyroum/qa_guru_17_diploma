@@ -1,7 +1,6 @@
 import allure
 from allure_commons.types import AttachmentType
 import requests
-from project import config
 
 
 def attach_screenshot(browser):
@@ -47,10 +46,10 @@ def attach_video(browser):
     )
 
 
-def attach_bstack_video(session_id, browserstack_user, browserstack_key):
+def attach_bstack_video(session_id, bstack_userName, bstack_accessKey):
     bstack_session = requests.get(
         f'https://api.browserstack.com/app-automate/sessions/{session_id}.json',
-        auth=(browserstack_user, browserstack_key),
+        auth=(bstack_userName, bstack_accessKey),
     ).json()
 
     video_url = bstack_session['automation_session']['video_url']

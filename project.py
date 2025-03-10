@@ -7,17 +7,18 @@ from selene.support.shared import config
 
 APP_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "resources", "vse_instrumenti.apk"))
 
+
 class Config(pydantic_settings.BaseSettings):
-    # Контекст запуска: local/selenoid/emulator/browserstack
+
     context: Literal["local", "selenoid", "emulator", "browserstack"] = "local"
 
-    # Общие настройки для WEB/API
+
     base_url: str = "https://www.regard.ru/"
     domain_url: str = "www.regard.ru"
     login_api_url: str = ".www.regard.ru"
     timeout: float = 3.0
 
-    # Локальный/Selenoid (WEB)
+
     driver_name: str = "chrome"
     email: str = ""
     password: str = ""
@@ -26,14 +27,16 @@ class Config(pydantic_settings.BaseSettings):
     headless: bool = False
     selenoid_user: str = ""
     selenoid_password: str = ""
+
     @property
     def selenoid_hub(self) -> str:
         return f"https://{self.selenoid_user}:{self.selenoid_password}@selenoid.autotests.cloud/wd/hub"
+
     selenoid_browser_version: Optional[str] = "100.0"
     enable_vnc: bool = False
     enable_video: bool = False
 
-    # Мобильные тесты (Appium)
+
     appium_hub: Optional[str] = None  # Пример: http://localhost:4723/wd/hub
     bs_hub: Optional[str] = None
     platform_name: Optional[str] = None  # Android/iOS
@@ -48,4 +51,6 @@ class Config(pydantic_settings.BaseSettings):
 def get_config(context: str) -> Config:
     dotenv.load_dotenv(dotenv.find_dotenv(f".env.{context}"))
     return Config()
+
+
 config = Config()

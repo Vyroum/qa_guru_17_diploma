@@ -3,9 +3,9 @@ from pages.web_ui.login import Login
 from resources.common_actions import Common
 import pytest
 
-
 login = Login()
 common = Common()
+
 
 @pytest.mark.web
 @allure.story("Манипуляции с логином через браузер")
@@ -17,6 +17,7 @@ def test_failed_authorization():
     login.input_invalid_login_credentials()
     login.press_login_button()
     login.check_unsuccessfull_authorization()
+
 
 @pytest.mark.web
 @allure.title("Проверка успешной авторизации")
