@@ -15,6 +15,10 @@ def pytest_addoption(parser):
         help="Context for tests: local/selenoid/emulator/browserstack",
     )
 
+@pytest.fixture
+def open_browser():
+    browser.open("/")
+
 
 @pytest.fixture(scope="function", autouse=True)
 def browser_set(request):
@@ -92,14 +96,6 @@ def browser_set(request):
         allure_utils.attach_web_logs(browser)
         allure_utils.attach_video(browser)
 
-    # if context == "browserstack":
-    #     session_id = browser.driver.session_id
-    #     allure_utils.attach_bstack_video(
-    #         session_id,
-    #         project_config.browserstack_user,
-    #         project_config.browserstack_key
-    #     )
-    #     allure_utils.attach_mobile_page_source(browser)
 
     if context in ["local", "selenoid", "emulator", "browserstack"]:
         browser.quit()
