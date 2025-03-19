@@ -7,21 +7,22 @@ load_dotenv(".env.site_credentials")
 email = os.getenv("email")
 password = os.getenv("password")
 
-
 class Login:
     def open_login_form_or_user_page(self):
         with allure.step("Открытие формы логина или личного кабинета"):
             browser.element(by.text("Кабинет")).click()
+
+    def input_valid_login_credentials(self):
+        with allure.step("Ввод валидного логина и пароля"):
+
+            browser.element(by.name("login")).click().type(email)
+            browser.element(by.name("password")).click().type(password)
 
     def input_invalid_login_credentials(self):
         with allure.step("Ввод невалидного логина и пароля"):
             browser.element(by.name("login")).click().type("1231421@13212.ru")
             browser.element(by.name("password")).click().type("123125412")
 
-    def input_valid_login_credentials(self):
-        with allure.step("Ввод валидного логина и пароля"):
-            browser.element(by.name("login")).click().type(email)
-            browser.element(by.name("password")).click().type(password)
 
     def press_login_button(self):
         with allure.step("Нажатие кнопки войти"):
