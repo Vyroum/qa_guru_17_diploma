@@ -33,7 +33,6 @@ class CartAPI:
             r = requests.put(f'{config.base_url}api/site/basket', json=payload1, headers=header1)
             assert r.status_code == 200
 
-
             cookie_basket.take_basket_cookie_and_add_to_browser(r)
         with allure.step("Проверка успешного добавления в корзину"):
             cart.open_cart()
@@ -43,11 +42,11 @@ class CartAPI:
             r = requests.delete(f'{config.base_url}api/site/basket')
             assert r.status_code == 200
 
-
         # Механизм очистки корзины просто очищает куки
         # Поэтому вместо взятия удаленного куки выполняется удаление куки
         with allure.step("Очистка куки корзины"):
             browser.driver.delete_cookie("basket_id")
             browser.driver.refresh()
+
 
 cart_api = CartAPI

@@ -1,7 +1,7 @@
 import time
 import requests
 from dotenv import load_dotenv
-from selene import browser
+
 import allure
 from jsonschema import validate
 import os
@@ -61,9 +61,8 @@ class LoginAPI:
             time.sleep(1)
 
     def check_failed_authoriaztion_through_browser(self):
-
-            login_web.open_login_form_or_user_page()
-            login_web.check_login_form()
+        login_web.open_login_form_or_user_page()
+        login_web.check_login_form()
 
     def logout_through_api(self):
         with allure.step("Запрос на логаут через API"):

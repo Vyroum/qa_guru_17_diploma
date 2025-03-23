@@ -14,7 +14,6 @@ class TestLoginApi:
         api_login.successful_authentication_through_api()
         api_login.check_successful_authorization_in_browser()
 
-
     @allure.tag("logout")
     @allure.title("Проверка логаута через API")
     def test_logout_api(self):

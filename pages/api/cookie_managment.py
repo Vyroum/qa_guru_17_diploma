@@ -1,7 +1,7 @@
-import  allure
-import requests
+import allure
 from selene import browser
 from project import config
+
 
 class BasketCookieManagment:
     def take_basket_cookie_and_add_to_browser(self, response):
@@ -19,6 +19,7 @@ class BasketCookieManagment:
                 'httponly': True
             })
             browser.driver.refresh()
+
 
 class LoginCookieManager:
     def take_login_cookie_and_add_to_browser(self, response):

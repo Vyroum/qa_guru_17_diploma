@@ -1,6 +1,5 @@
-import time
 from appium.webdriver.common.appiumby import AppiumBy
-from selene import browser, have, by, be
+from selene import browser
 from allure import step
 
 
@@ -25,5 +24,6 @@ class Onboarding:
     def close_tutorial_tip(self):
         with step("Закрытие обучающей подсказки"):
             browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/buttonClose")).click()
+
 
 app_setup = Onboarding()

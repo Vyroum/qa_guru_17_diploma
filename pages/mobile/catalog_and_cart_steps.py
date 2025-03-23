@@ -1,5 +1,5 @@
 from appium.webdriver.common.appiumby import AppiumBy
-from selene import browser, have, by, be
+from selene import browser, have, be
 from allure import step
 
 
@@ -41,6 +41,7 @@ class Cart:
             with step("Проверка удаления из корзины"):
                 browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/textViewEmptyTitle")).should(
                     have.text("В корзине пока ничего нет"))
+
 
 catalog = Catalog()
 cart = Cart()
