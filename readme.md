@@ -64,7 +64,7 @@ ___
 
 ### Детальный отчёт о пройденном тесте
 
-<img src="https://github.com/Vyroum/qa_guru_17_diploma/blob/main/readme_files/Screenshot_7.png" width="630" height="320"/>
+<img src="https://github.com/Vyroum/qa_guru_17_diploma/blob/main/readme_files/Screenshot_8.png" width="630" height="320"/>
 
 ## Пример отчёта в Allure TestOps
 
