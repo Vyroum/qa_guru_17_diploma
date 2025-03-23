@@ -60,7 +60,7 @@ ___
 ## Пример отчёта в Allure Report
 
 ### Общий отчёт о запущенных тестах
-<img src="https://github.com/Vyroum/qa_guru_17_diploma/blob/main/readme_files/Screenshot_4.png" width="630" height="320"/>
+<img src="https://github.com/Vyroum/qa_guru_17_diploma/blob/main/readme_files/Screenshot_3.png" width="630" height="320"/>
 
 ### Детальный отчёт о пройденном тесте
 
