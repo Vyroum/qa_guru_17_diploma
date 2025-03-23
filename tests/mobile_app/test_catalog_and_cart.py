@@ -1,61 +1,32 @@
-import time
-
 import allure
-from allure_commons._allure import step
-from appium.webdriver.common.appiumby import AppiumBy
-from selene import browser, have, be
+from pages.mobile.app_settings_steps import app_setup
+from pages.mobile.catalog_and_cart_steps import catalog, cart
 import pytest
 
 
 @pytest.mark.mobile
-@allure.tag("cart", "catalog", "mobile")
-@allure.title("Добавление предмета в корзину")
-def test_find_item_in_catalog():
-    time.sleep(5)
-    with step("Пропуск стартовой страницы"):
-        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/textViewSkip")).click()
+@allure.tag("mobile")
+class TestMobileApp:
+    @allure.tag("precondition")
+    @allure.title("Настройка приложения при первом запуске")
+    def test_first_launch_setup(self):
+        app_setup.skip_start_page()
+        app_setup.cancel_geolocation_setting()
+        app_setup.choose_city_location("Москва")
+        app_setup.close_tutorial_tip()
 
-    with step("Отмена геолокации геолокации"):
-        browser.element((AppiumBy.ID, "com.android.packageinstaller:id/permission_deny_button")).click()
+    @allure.tag("cart", "catalog")
+    @allure.title("Добавление предмета в корзину")
+    def test_find_item_in_catalog(self):
+        app_setup.skip_start_page()
+        app_setup.cancel_geolocation_setting()
+        app_setup.choose_city_location("Москва")
+        app_setup.close_tutorial_tip()
+        catalog.searching_item("Пылесос")
+        catalog.found_item_confirmation()
+        catalog.access_category()
+        catalog.add_to_cart()
+        cart.open_cart()
+        cart.delete_from_cart()
 
-    with step("Подтвеждение отмены геолокации"):
-        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/buttonCancel")).click()
 
-    with step("Ввод города Москва"):
-        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/editTextSearch")).type("Москва")
-
-    with step("Выбор города"):
-        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/viewFlipper")).click()
-
-    with step("Закрытие обучающей подсказки"):
-        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/buttonClose")).click()
-
-    with step("Поиск товара в каталоге"):
-        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/editTextSearch")).click().type(
-            "Пылесос")
-        time.sleep(1)
-
-    with step("Подтверждение успешного поиска категории 'Пылесосы для дома'"):
-        browser.element((AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Пылесосы для дома")')).should(be.visible)
-        browser.element((AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Пылесосы для дома")')).click()
-        pass
-    with step("Заход в подкатегорию 'Вертикальные'"):
-        browser.element((AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Вертикальные").instance(0)')).click()
-
-    with step("Добавление предмета в корзину"):
-        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/buttonPrimaryAction")).click()
-
-    with step("Открытие корзины"):
-        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/buttonGoToCart")).click()
-
-    with step("Проверка того что предмет добавлен в корзину"):
-        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/textViewName")).should(
-            have.text("пылесос"))
-
-    with step("Удаление предмета из корзины"):
-        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/textViewDeleteSelected")).click()
-        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/buttonPositive")).click()
-
-    with step("Проверка удаления из корзины"):
-        browser.element((AppiumBy.ID, "com.notissimus.allinstruments.android:id/textViewEmptyTitle")).should(
-            have.text("В корзине пока ничего нет"))

@@ -12,11 +12,17 @@ class Login:
         with allure.step("Открытие формы логина или личного кабинета"):
             browser.element(by.text("Кабинет")).click()
 
+    def check_login_form(self):
+        with allure.step("Проверка формы логина"):
+            browser.element(by.text("Личный кабинет")).should(be.visible)
+
     def input_valid_login_credentials(self):
         with allure.step("Ввод валидного логина и пароля"):
 
             browser.element(by.name("login")).click().type(email)
             browser.element(by.name("password")).click().type(password)
+
+
 
     def input_invalid_login_credentials(self):
         with allure.step("Ввод невалидного логина и пароля"):
@@ -49,3 +55,5 @@ class Login:
             browser.element(by.text("Кабинет")).click()
             browser.element(by.name("login")).should(be.visible)
             browser.element(by.name("password")).should(be.visible)
+
+login_web = Login()

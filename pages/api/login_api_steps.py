@@ -1,15 +1,16 @@
+import time
 import requests
 from dotenv import load_dotenv
 from selene import browser
 import allure
 from jsonschema import validate
 import os
-from pages.web_ui.login import Login
+from pages.web_ui.login import login_web
+from pages.api.cookie_managment import cookie_login
 from resources.schema import login_schema
 from allure_commons.types import AttachmentType
 from project import config
 
-login_action = Login()
 load_dotenv(".env.site_credentials")
 email = os.getenv("email")
 password = os.getenv("password")
@@ -22,6 +23,7 @@ class LoginAPI:
 
     def successful_authentication_through_api(self):
         with allure.step('Запрос на авторизацию с валидными данными'):
+            time.sleep(1)
             r = requests.post(f'{config.base_url}api/site/login/',
                               data={"login": email, "password": password},
                               allow_redirects=False, headers=headers)
@@ -31,20 +33,8 @@ class LoginAPI:
         with allure.step("Валидация JSON-схемы ответа"):
             validate(body, login_schema)
 
-        with allure.step("Получение cookie из API"):
-            cookie = r.cookies.get("site_laravel_session")
+            cookie_login.take_login_cookie_and_add_to_browser(r)
 
-        with allure.step("Добавление cookie из API в сессию браузера"):
-            browser.open('/')
-            browser.driver.add_cookie({
-                'name': 'site_laravel_session',
-                'value': cookie,
-                'domain': config.login_api_url,
-                'path': '/',
-                'secure': True,
-                'httponly': True
-            })
-            browser.driver.refresh()
             allure.attach(body=r.url, name="Request URL", attachment_type=AttachmentType.TEXT, extension="txt")
             allure.attach(body=r.text, name="Response", attachment_type=AttachmentType.TEXT, extension="txt")
             allure.attach(body=str(r.status_code), name="Status Code", attachment_type=AttachmentType.TEXT,
@@ -52,20 +42,28 @@ class LoginAPI:
 
     def check_successful_authorization_in_browser(self):
         with allure.step("Проверка успешной авторизации в браузере"):
-            login_action.close_tutorial_window()
-            login_action.open_login_form_or_user_page()
-            login_action.check_successul_authorization()
+            login_web.close_tutorial_window()
+            login_web.open_login_form_or_user_page()
+            login_web.check_successul_authorization()
 
     def failed_authorization_through_api(self):
         with allure.step("Запрос на авторизацию с невалидными данными"):
+            time.sleep(1)
             r = requests.post(f'{config.base_url}api/site/login/',
-                              data={"login": "1231@awfwa.ru", "password": "awgagawg"}, allow_redirects=False)
+                              data={"login": "1231@awfwa.ru", "password": "awgagawg"}, allow_redirects=True)
         with allure.step("Проверка статус кода"):
             assert r.status_code == 401
+            cookie_login.take_login_cookie_and_add_to_browser(r)
             allure.attach(body=r.url, name="Request URL", attachment_type=AttachmentType.TEXT, extension="txt")
             allure.attach(body=r.text, name="Response", attachment_type=AttachmentType.TEXT, extension="txt")
             allure.attach(body=str(r.status_code), name="Status Code", attachment_type=AttachmentType.TEXT,
                           extension="txt")
+            time.sleep(1)
+
+    def check_failed_authoriaztion_through_browser(self):
+
+            login_web.open_login_form_or_user_page()
+            login_web.check_login_form()
 
     def logout_through_api(self):
         with allure.step("Запрос на логаут через API"):
@@ -79,17 +77,7 @@ class LoginAPI:
             allure.attach(body=str(r.status_code), name="Status Code", attachment_type=AttachmentType.TEXT,
                           extension="txt")
 
-        with allure.step("Получение cookie из API"):
-            cookie = r.cookies.get("site_laravel_session")
+            cookie_login.take_login_cookie_and_add_to_browser(r)
 
-        with allure.step("Добавление cookie из API"):
-            browser.open('/')
-            browser.driver.add_cookie({
-                'name': 'site_laravel_session',
-                'value': cookie,
-                'domain': config.login_api_url,
-                'path': '/',
-                'secure': True,
-                'httponly': True
-            })
-            browser.driver.refresh()
+
+api_login = LoginAPI()

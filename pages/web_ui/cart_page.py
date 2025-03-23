@@ -31,3 +31,5 @@ class Cart:
     def check_empty_cart(self):
         with allure.step("Проверка того, что корзина пустая"):
             browser.element("[class='BasketEmpty_black__QhefV']").should(have.text("В корзине пока ничего нет"))
+
+cart = Cart()

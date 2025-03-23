@@ -59,6 +59,7 @@ def browser_set(request):
         from appium import webdriver as appium_webdriver
         from appium.options.android import UiAutomator2Options
 
+        browser.config.timeout = 10.0
         desired_caps = {
             "platformName": project_config.platform_name,
             "platformVersion": project_config.platform_version,

@@ -1,11 +1,11 @@
 import requests
 from selene import browser
 import allure
-from pages.web_ui.cart_page import Cart
+from pages.web_ui.cart_page import cart
+from pages.api.cookie_managment import cookie_basket
+
 from resources.cpu import cpu
 from project import config
-
-cart = Cart()
 
 header1 = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"}
@@ -26,20 +26,7 @@ class CartAPI:
             r = requests.put(f'{config.base_url}api/site/basket', json=payload1, headers=header1)
             assert r.status_code == 200
 
-        with allure.step("Получение куки из API"):
-            cookie = r.cookies.get("basket_id")
-
-        with allure.step("Добавление куки из API"):
-            browser.open('/')
-            browser.driver.add_cookie({
-                'name': 'basket_id',
-                'value': cookie,
-                'domain': config.domain_url,
-                'path': '/',
-                'secure': True,
-                'httponly': True
-            })
-            browser.driver.refresh()
+            cookie_basket.take_basket_cookie_and_add_to_browser(r)
 
     def delete_item_from_cart(self):
         with allure.step("Запрос на добавление предмета в корзину"):
@@ -47,20 +34,7 @@ class CartAPI:
             assert r.status_code == 200
 
 
-        with allure.step("Получение куки из API"):
-            cookie = r.cookies.get("basket_id")
-
-        with allure.step("Добавление куки из API"):
-            browser.open('/')
-            browser.driver.add_cookie({
-                'name': 'basket_id',
-                'value': cookie,
-                'domain': config.domain_url,
-                'path': '/',
-                'secure': True,
-                'httponly': True
-            })
-            browser.driver.refresh()
+            cookie_basket.take_basket_cookie_and_add_to_browser(r)
         with allure.step("Проверка успешного добавления в корзину"):
             cart.open_cart()
             cart.check_presence_in_cart(cpu)
@@ -75,3 +49,5 @@ class CartAPI:
         with allure.step("Очистка куки корзины"):
             browser.driver.delete_cookie("basket_id")
             browser.driver.refresh()
+
+cart_api = CartAPI

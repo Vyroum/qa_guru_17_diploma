@@ -57,6 +57,9 @@ login_schema = {
             "type": "null"
         },
         "custom_avatar": {
+            "type": "string"
+        },
+        "custom_background": {
             "type": "null"
         },
         "is_review_notification_enabled": {
@@ -375,6 +378,7 @@ login_schema = {
         "verified",
         "avatar_achievement",
         "custom_avatar",
+        "custom_background",
         "is_review_notification_enabled",
         "notification_settings",
         "compare_goods",

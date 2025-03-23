@@ -22,3 +22,4 @@ class Catalog:
             browser.element(by.text("В корзину")).should(be.clickable)
             browser.element(by.text("В корзину")).click()
 
+catalog = Catalog()
